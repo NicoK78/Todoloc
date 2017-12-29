@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		033432161FF5AA930017835C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432151FF5AA930017835C /* AppDelegate.swift */; };
+		033432181FF5AA930017835C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432171FF5AA930017835C /* ViewController.swift */; };
+		0334321B1FF5AA930017835C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033432191FF5AA930017835C /* Main.storyboard */; };
+		0334321D1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334321C1FF5AA930017835C /* Assets.xcassets */; };
+		033432201FF5AA930017835C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0334321E1FF5AA930017835C /* LaunchScreen.storyboard */; };
+		033432251FF5AA930017835C /* todoloc WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 033432241FF5AA930017835C /* todoloc WatchKit App.app */; };
+		0334322B1FF5AA930017835C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033432291FF5AA930017835C /* Interface.storyboard */; };
+		0334322D1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334322C1FF5AA930017835C /* Assets.xcassets */; };
+		033432341FF5AA930017835C /* todoloc WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		033432391FF5AA930017835C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432381FF5AA930017835C /* InterfaceController.swift */; };
+		0334323B1FF5AA930017835C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334323A1FF5AA930017835C /* ExtensionDelegate.swift */; };
+		0334323D1FF5AA930017835C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334323C1FF5AA930017835C /* NotificationController.swift */; };
+		0334323F1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334323E1FF5AA930017835C /* Assets.xcassets */; };
+		033432511FF5B8A40017835C /* ElementsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334324F1FF5B8A40017835C /* ElementsListViewController.swift */; };
+		033432521FF5B8A40017835C /* ElementsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033432501FF5B8A40017835C /* ElementsListViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		033432261FF5AA930017835C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0334320A1FF5AA930017835C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 033432231FF5AA930017835C;
+			remoteInfo = "todoloc WatchKit App";
+		};
+		033432351FF5AA930017835C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0334320A1FF5AA930017835C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 033432321FF5AA930017835C;
+			remoteInfo = "todoloc WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		033432471FF5AA930017835C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				033432341FF5AA930017835C /* todoloc WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0334324B1FF5AA930017835C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				033432251FF5AA930017835C /* todoloc WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		033432121FF5AA930017835C /* todoloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		033432151FF5AA930017835C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		033432171FF5AA930017835C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0334321A1FF5AA930017835C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0334321C1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0334321F1FF5AA930017835C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		033432211FF5AA930017835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		033432241FF5AA930017835C /* todoloc WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todoloc WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0334322A1FF5AA930017835C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		0334322C1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0334322E1FF5AA930017835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "todoloc WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		033432381FF5AA930017835C /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		0334323A1FF5AA930017835C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		0334323C1FF5AA930017835C /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		0334323E1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		033432401FF5AA930017835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		033432411FF5AA930017835C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		0334324F1FF5B8A40017835C /* ElementsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsListViewController.swift; sourceTree = "<group>"; };
+		033432501FF5B8A40017835C /* ElementsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElementsListViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0334320F1FF5AA930017835C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		033432301FF5AA930017835C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		033432091FF5AA930017835C = {
+			isa = PBXGroup;
+			children = (
+				033432141FF5AA930017835C /* todoloc */,
+				033432281FF5AA930017835C /* todoloc WatchKit App */,
+				033432371FF5AA930017835C /* todoloc WatchKit Extension */,
+				033432131FF5AA930017835C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		033432131FF5AA930017835C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				033432121FF5AA930017835C /* todoloc.app */,
+				033432241FF5AA930017835C /* todoloc WatchKit App.app */,
+				033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		033432141FF5AA930017835C /* todoloc */ = {
+			isa = PBXGroup;
+			children = (
+				033432151FF5AA930017835C /* AppDelegate.swift */,
+				033432171FF5AA930017835C /* ViewController.swift */,
+				033432191FF5AA930017835C /* Main.storyboard */,
+				0334321C1FF5AA930017835C /* Assets.xcassets */,
+				0334321E1FF5AA930017835C /* LaunchScreen.storyboard */,
+				033432211FF5AA930017835C /* Info.plist */,
+				0334324F1FF5B8A40017835C /* ElementsListViewController.swift */,
+				033432501FF5B8A40017835C /* ElementsListViewController.xib */,
+			);
+			path = todoloc;
+			sourceTree = "<group>";
+		};
+		033432281FF5AA930017835C /* todoloc WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				033432291FF5AA930017835C /* Interface.storyboard */,
+				0334322C1FF5AA930017835C /* Assets.xcassets */,
+				0334322E1FF5AA930017835C /* Info.plist */,
+			);
+			path = "todoloc WatchKit App";
+			sourceTree = "<group>";
+		};
+		033432371FF5AA930017835C /* todoloc WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				033432381FF5AA930017835C /* InterfaceController.swift */,
+				0334323A1FF5AA930017835C /* ExtensionDelegate.swift */,
+				0334323C1FF5AA930017835C /* NotificationController.swift */,
+				0334323E1FF5AA930017835C /* Assets.xcassets */,
+				033432401FF5AA930017835C /* Info.plist */,
+				033432411FF5AA930017835C /* PushNotificationPayload.apns */,
+			);
+			path = "todoloc WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		033432111FF5AA930017835C /* todoloc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0334324C1FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc" */;
+			buildPhases = (
+				0334320E1FF5AA930017835C /* Sources */,
+				0334320F1FF5AA930017835C /* Frameworks */,
+				033432101FF5AA930017835C /* Resources */,
+				0334324B1FF5AA930017835C /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				033432271FF5AA930017835C /* PBXTargetDependency */,
+			);
+			name = todoloc;
+			productName = todoloc;
+			productReference = 033432121FF5AA930017835C /* todoloc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		033432231FF5AA930017835C /* todoloc WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 033432481FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc WatchKit App" */;
+			buildPhases = (
+				033432221FF5AA930017835C /* Resources */,
+				033432471FF5AA930017835C /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				033432361FF5AA930017835C /* PBXTargetDependency */,
+			);
+			name = "todoloc WatchKit App";
+			productName = "todoloc WatchKit App";
+			productReference = 033432241FF5AA930017835C /* todoloc WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		033432321FF5AA930017835C /* todoloc WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 033432441FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc WatchKit Extension" */;
+			buildPhases = (
+				0334322F1FF5AA930017835C /* Sources */,
+				033432301FF5AA930017835C /* Frameworks */,
+				033432311FF5AA930017835C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "todoloc WatchKit Extension";
+			productName = "todoloc WatchKit Extension";
+			productReference = 033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0334320A1FF5AA930017835C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Nico;
+				TargetAttributes = {
+					033432111FF5AA930017835C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					033432231FF5AA930017835C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					033432321FF5AA930017835C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0334320D1FF5AA930017835C /* Build configuration list for PBXProject "todoloc" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 033432091FF5AA930017835C;
+			productRefGroup = 033432131FF5AA930017835C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				033432111FF5AA930017835C /* todoloc */,
+				033432231FF5AA930017835C /* todoloc WatchKit App */,
+				033432321FF5AA930017835C /* todoloc WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		033432101FF5AA930017835C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				033432201FF5AA930017835C /* LaunchScreen.storyboard in Resources */,
+				0334321D1FF5AA930017835C /* Assets.xcassets in Resources */,
+				0334321B1FF5AA930017835C /* Main.storyboard in Resources */,
+				033432521FF5B8A40017835C /* ElementsListViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		033432221FF5AA930017835C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0334322D1FF5AA930017835C /* Assets.xcassets in Resources */,
+				0334322B1FF5AA930017835C /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		033432311FF5AA930017835C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0334323F1FF5AA930017835C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0334320E1FF5AA930017835C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				033432181FF5AA930017835C /* ViewController.swift in Sources */,
+				033432511FF5B8A40017835C /* ElementsListViewController.swift in Sources */,
+				033432161FF5AA930017835C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0334322F1FF5AA930017835C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0334323D1FF5AA930017835C /* NotificationController.swift in Sources */,
+				0334323B1FF5AA930017835C /* ExtensionDelegate.swift in Sources */,
+				033432391FF5AA930017835C /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		033432271FF5AA930017835C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 033432231FF5AA930017835C /* todoloc WatchKit App */;
+			targetProxy = 033432261FF5AA930017835C /* PBXContainerItemProxy */;
+		};
+		033432361FF5AA930017835C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 033432321FF5AA930017835C /* todoloc WatchKit Extension */;
+			targetProxy = 033432351FF5AA930017835C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		033432191FF5AA930017835C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0334321A1FF5AA930017835C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0334321E1FF5AA930017835C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0334321F1FF5AA930017835C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		033432291FF5AA930017835C /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0334322A1FF5AA930017835C /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		033432421FF5AA930017835C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		033432431FF5AA930017835C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		033432451FF5AA930017835C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "todoloc WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		033432461FF5AA930017835C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "todoloc WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		033432491FF5AA930017835C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = todoloc_WatchKit_Extension;
+				INFOPLIST_FILE = "todoloc WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		0334324A1FF5AA930017835C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = todoloc_WatchKit_Extension;
+				INFOPLIST_FILE = "todoloc WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		0334324D1FF5AA930017835C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = todoloc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0334324E1FF5AA930017835C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = todoloc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0334320D1FF5AA930017835C /* Build configuration list for PBXProject "todoloc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				033432421FF5AA930017835C /* Debug */,
+				033432431FF5AA930017835C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		033432441FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				033432451FF5AA930017835C /* Debug */,
+				033432461FF5AA930017835C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		033432481FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				033432491FF5AA930017835C /* Debug */,
+				0334324A1FF5AA930017835C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0334324C1FF5AA930017835C /* Build configuration list for PBXNativeTarget "todoloc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0334324D1FF5AA930017835C /* Debug */,
+				0334324E1FF5AA930017835C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0334320A1FF5AA930017835C /* Project object */;
+}
