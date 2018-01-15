@@ -1,42 +1,25 @@
 //
-//  ElementsListViewController.swift
+//  AddDetailViewController.swift
 //  todoloc
 //
-//  Created by Nico on 29/12/2017.
-//  Copyright © 2017 Nico. All rights reserved.
+//  Created by Selom Viadenou on 13/01/2018.
+//  Copyright © 2018 Nico. All rights reserved.
 //
 
 import UIKit
 
-class ElementsListViewController: UIViewController {
+class AddDetailViewController: UIViewController {
+    var todo : Todo? = nil
     
-    @IBOutlet var navvigationItem: UINavigationItem!
-    
-
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = self.todo?.nom
         // Do any additional setup after loading the view.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addButton(_:)))
-        self.navigationItem.rightBarButtonItem  = addButton
-    }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    @objc func addButton(_ sender:AnyObject){
-        self.navigationController?.pushViewController(AddTodoViewController(), animated: true)
     }
     
 
