@@ -18,25 +18,15 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var todos: [Todo] = []
-    //var todo:Todo? = nil
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.todo = Todo()
         getTodo()
-        print("---------")
-        print(todos)
-        //print(dataSource)
         self.tableView.register(UINib(nibName:"ElementListTableViewCell",bundle:nil), forCellReuseIdentifier: "reuseCellIdentifier")
         
-        //        for i in 0...1{
-        //            var todo: Todo = Todo()
-        //            todo.nom = "Test \(i)"
-        //            todo.sousTitre += ["Sous Titre plein d'info \(i)"]
-        //            dataSource.append(todo)
-        //        }
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -49,8 +39,6 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton))
         self.navigationItem.rightBarButtonItem  = add
         getTodo()
-        print("---------")
-        print(todos)
     }
     
     func getTodo(){
@@ -97,22 +85,15 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             print("delete button tapped")
-            self.todos.remove(at: indexPath.item)
-            self.tableView.reloadData()
+            let todo = self.todos[indexPath.row]
+            self.context.delete(todo)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            self.getTodo()
         }
         delete.backgroundColor = .red
         
         return [delete]
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 
 }
