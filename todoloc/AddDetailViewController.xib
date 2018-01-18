@@ -12,40 +12,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDetailViewController" customModule="todoloc" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="mapView" destination="NOY-gm-2e3" id="ctL-Yw-XYU"/>
+                <outlet property="view" destination="56q-pZ-1uZ" id="5b8-Go-NLC"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="56q-pZ-1uZ">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GSo-Tc-0Xt">
-                    <rect key="frame" x="16" y="137" width="343" height="30"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-ge-9Yi">
-                    <rect key="frame" x="16" y="77" width="16" height="29"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NOY-gm-2e3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </mapView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="GSo-Tc-0Xt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6l3-0f-O0p"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="f1e-ge-9Yi" secondAttribute="trailing" constant="343" id="AXh-qh-otl"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GSo-Tc-0Xt" secondAttribute="trailing" constant="16" id="HD6-mE-BmS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GSo-Tc-0Xt" secondAttribute="bottom" constant="540" id="IaM-cG-LCS"/>
-                <constraint firstItem="f1e-ge-9Yi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="MuG-xW-596"/>
-                <constraint firstItem="GSo-Tc-0Xt" firstAttribute="top" secondItem="f1e-ge-9Yi" secondAttribute="bottom" constant="18" id="Ozm-5R-0fy"/>
-                <constraint firstItem="f1e-ge-9Yi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Zpq-B9-RMJ"/>
-                <constraint firstItem="GSo-Tc-0Xt" firstAttribute="top" secondItem="f1e-ge-9Yi" secondAttribute="bottom" constant="18" id="vQY-rK-f3N"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="poQ-Rl-3Rn"/>
+            <point key="canvasLocation" x="188.5" y="-255.5"/>
         </view>
     </objects>
 </document>

@@ -11,36 +11,56 @@ import MapKit
 import CoreLocation
 
 class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
-    var todo : Todo? = nil
+    var todom : TodoModel? = nil
     
+    var tabDetail:[String] = []
     var locationManager:CLLocationManager!
     var initialLocation:CLLocation!
     
     let regionRadius: CLLocationDistance = 1000
     
-    @IBOutlet weak var changeTitreTextField: UITextField?
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var changeTitreTextField: UITextField!
     
-    @IBOutlet weak var textFieldSearch: UITextField!
+    
+
+    @IBOutlet var textFieldDetail: UITextField!
+    
+
+    @IBOutlet var detailListView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo = Todo()
+        self.detailListView.dataSource = self
+        todom = TodoModel()
+        
         // Do any additional setup after loading the view.
         let nextButton = UIBarButtonItem(title: "Passer", style: .plain, target: self, action: #selector(nextEtape(_:)))
         self.navigationItem.rightBarButtonItem  = nextButton
         //self.navigationItem.hidesBackButton = true
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
-
+    
+    @IBAction func addDetail(_ sender: Any) {
+        if((self.textFieldDetail.text) != nil && self.textFieldDetail.text != ""){
+            self.tabDetail.append(self.textFieldDetail.text!)
+            self.textFieldDetail.text = ""
+            self.detailListView.reloadData()
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
     @IBAction func changeTitre(_ sender: Any, forEvent event: UIEvent) {
         if(self.changeTitreTextField?.text != ""){
             self.navigationItem.rightBarButtonItem?.isEnabled = true;
             self.navigationItem.title = self.changeTitreTextField?.text
-            self.todo?.nom = (self.changeTitreTextField?.text)!
+            self.todom?.titre = (self.changeTitreTextField?.text)!
         }
         if(self.changeTitreTextField?.text == nil){
             self.navigationItem.rightBarButtonItem?.isEnabled = false;
@@ -62,20 +82,27 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        determineMyCurrentLocation()
+        //determineMyCurrentLocation()
     }
     
     @objc func nextEtape(_ sender:AnyObject){
+        self.todom?.titre = (changeTitreTextField?.text)!
+        self.todom?.taches = self.tabDetail
+        
+        print((changeTitreTextField?.text)!)
+        print(self.tabDetail)
         let AddDetailController = AddDetailViewController(nibName: "AddDetailViewController", bundle: nil)
-        AddDetailController.todo = self.todo
+        AddDetailController.todom = self.todom
         
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         self.navigationItem.backBarButtonItem = backItem
         
+        
+        
         self.navigationController?.pushViewController(AddDetailController, animated: true)
     }
-
+    
     func determineMyCurrentLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -94,15 +121,15 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
         // Call stopUpdatingLocation() to stop listening for location updates,
         // other wise this function will be called every time when user location changes.
         
-         //
+        //
         
         print("user latitude = \(userLocation.coordinate.latitude)")
         print("user longitude = \(userLocation.coordinate.longitude)")
         
         let coordinateUser = MKCoordinateRegionMakeWithDistance(userLocation.coordinate,
-                                                                  regionRadius, regionRadius)
-        mapView.setRegion(coordinateUser, animated: true)
-        manager.stopUpdatingLocation()
+                                                                regionRadius, regionRadius)
+        //mapView.setRegion(coordinateUser, animated: true)
+        //manager.stopUpdatingLocation()
         
     }
     
@@ -111,15 +138,34 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
         print("Error \(error)")
     }
     
-
+    
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension AddTodoViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tabDetail.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        cell.textLabel?.text = self.tabDetail[indexPath.item]
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
 }
