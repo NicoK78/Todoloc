@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		033432161FF5AA930017835C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432151FF5AA930017835C /* AppDelegate.swift */; };
 		033432181FF5AA930017835C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432171FF5AA930017835C /* ViewController.swift */; };
-		0334321B1FF5AA930017835C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033432191FF5AA930017835C /* Main.storyboard */; };
 		0334321D1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334321C1FF5AA930017835C /* Assets.xcassets */; };
 		033432201FF5AA930017835C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0334321E1FF5AA930017835C /* LaunchScreen.storyboard */; };
 		033432251FF5AA930017835C /* todoloc WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 033432241FF5AA930017835C /* todoloc WatchKit App.app */; };
@@ -22,6 +21,11 @@
 		0334323F1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334323E1FF5AA930017835C /* Assets.xcassets */; };
 		033432511FF5B8A40017835C /* ElementsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334324F1FF5B8A40017835C /* ElementsListViewController.swift */; };
 		033432521FF5B8A40017835C /* ElementsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033432501FF5B8A40017835C /* ElementsListViewController.xib */; };
+		D33A6DE0200EB10400A1F995 /* AddTodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33A6DDC200EB10400A1F995 /* AddTodoViewController.xib */; };
+		D33A6DE1200EB10400A1F995 /* AddDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */; };
+		D33A6DE2200EB10400A1F995 /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */; };
+		D33A6DE3200EB10400A1F995 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */; };
+		D33A6DE5200EB1F900A1F995 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DE4200EB1F900A1F995 /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +74,6 @@
 		033432121FF5AA930017835C /* todoloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		033432151FF5AA930017835C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		033432171FF5AA930017835C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0334321A1FF5AA930017835C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0334321C1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0334321F1FF5AA930017835C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		033432211FF5AA930017835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +90,11 @@
 		033432411FF5AA930017835C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		0334324F1FF5B8A40017835C /* ElementsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsListViewController.swift; sourceTree = "<group>"; };
 		033432501FF5B8A40017835C /* ElementsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElementsListViewController.xib; sourceTree = "<group>"; };
+		D33A6DDC200EB10400A1F995 /* AddTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTodoViewController.xib; sourceTree = "<group>"; };
+		D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDetailViewController.xib; sourceTree = "<group>"; };
+		D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
+		D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		D33A6DE4200EB1F900A1F995 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +138,13 @@
 		033432141FF5AA930017835C /* todoloc */ = {
 			isa = PBXGroup;
 			children = (
+				D33A6DE4200EB1F900A1F995 /* Todo.swift */,
+				D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */,
+				D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */,
+				D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */,
+				D33A6DDC200EB10400A1F995 /* AddTodoViewController.xib */,
 				033432151FF5AA930017835C /* AppDelegate.swift */,
 				033432171FF5AA930017835C /* ViewController.swift */,
-				033432191FF5AA930017835C /* Main.storyboard */,
 				0334321C1FF5AA930017835C /* Assets.xcassets */,
 				0334321E1FF5AA930017835C /* LaunchScreen.storyboard */,
 				033432211FF5AA930017835C /* Info.plist */,
@@ -270,10 +282,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33A6DE0200EB10400A1F995 /* AddTodoViewController.xib in Resources */,
 				033432201FF5AA930017835C /* LaunchScreen.storyboard in Resources */,
 				0334321D1FF5AA930017835C /* Assets.xcassets in Resources */,
-				0334321B1FF5AA930017835C /* Main.storyboard in Resources */,
 				033432521FF5B8A40017835C /* ElementsListViewController.xib in Resources */,
+				D33A6DE1200EB10400A1F995 /* AddDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +315,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				033432181FF5AA930017835C /* ViewController.swift in Sources */,
+				D33A6DE5200EB1F900A1F995 /* Todo.swift in Sources */,
+				D33A6DE3200EB10400A1F995 /* AddTodoViewController.swift in Sources */,
 				033432511FF5B8A40017835C /* ElementsListViewController.swift in Sources */,
 				033432161FF5AA930017835C /* AppDelegate.swift in Sources */,
+				D33A6DE2200EB10400A1F995 /* AddDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		033432191FF5AA930017835C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0334321A1FF5AA930017835C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0334321E1FF5AA930017835C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -472,6 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				INFOPLIST_FILE = "todoloc WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp.watchkitextension;
@@ -489,6 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				INFOPLIST_FILE = "todoloc WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp.watchkitextension;
@@ -507,6 +517,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				IBSC_MODULE = todoloc_WatchKit_Extension;
 				INFOPLIST_FILE = "todoloc WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp;
@@ -525,6 +536,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				IBSC_MODULE = todoloc_WatchKit_Extension;
 				INFOPLIST_FILE = "todoloc WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc.watchkitapp;
@@ -542,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				INFOPLIST_FILE = todoloc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc;
@@ -556,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4G3577L73Y;
 				INFOPLIST_FILE = todoloc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esgi.todoloc;
