@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pqH-bo-SA6">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,39 +9,64 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Todo lists-->
         <scene sceneID="JXJ-RY-NNa">
             <objects>
-                <controller title="Home" id="pqH-bo-SA6">
+                <controller identifier="todoLists" title="Todo lists" id="pqH-bo-SA6" customClass="ElementsListInterfaceController" customModule="todoloc_WatchKit_App" customModuleProvider="target">
                     <items>
                         <table alignment="left" id="bcj-8w-Ii3">
                             <items>
-                                <tableRow id="IEd-do-86w">
-                                    <group key="rootItem" width="1" alignment="left" id="QrX-VX-eFv"/>
+                                <tableRow identifier="todoListRow" id="IEd-do-86w" userLabel="todoListRow" customClass="TodoListsRowController" customModule="todoloc_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="QrX-VX-eFv">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Todo List Title" id="xuY-aB-sGH"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="listTitle" destination="xuY-aB-sGH" id="Vrq-J3-4Gf"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="homeTodoListsTable" destination="bcj-8w-Ii3" id="uuC-TH-kQ4"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="20" y="454"/>
         </scene>
-        <!--Element-->
+        <!--Task-->
         <scene sceneID="cIj-4t-QfS">
             <objects>
-                <controller title="Element" id="Ugk-Qm-lks">
+                <controller identifier="detailTodoList" title="Task" id="Ugk-Qm-lks" customClass="DetailInterfaceController" customModule="todoloc_WatchKit_Extension">
                     <items>
-                        <group width="1" height="152" alignment="left" id="8SY-GP-h8V">
+                        <label width="1" alignment="left" text="Task description" textAlignment="center" numberOfLines="0" id="9Mg-O1-Hq8">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
+                        <map height="100" alignment="left" id="Cdh-Dh-2im"/>
+                        <group width="1" alignment="left" id="zFN-7K-0FL">
                             <items>
-                                <button width="31" height="154" alignment="left" title="ll \/" id="rjj-o2-Ukh"/>
-                                <label width="68" height="151" alignment="left" text="Nom" id="amj-mi-fDz"/>
-                                <button width="31" height="154" alignment="left" title="V" id="bqF-6P-twQ"/>
+                                <button width="0.5" alignment="left" title="↩︎" id="xfS-qQ-VKC">
+                                    <connections>
+                                        <action selector="onBackTouch" destination="Ugk-Qm-lks" id="g9k-Oa-b4V"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" title="✓" id="mtw-ft-NkT">
+                                    <color key="backgroundColor" red="0.52362268460000005" green="1" blue="0.36299128580000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="onCompleteTouch" destination="Ugk-Qm-lks" id="QvE-IY-QiQ"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="taskDescription" destination="9Mg-O1-Hq8" id="l9O-fK-eDQ"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="254" y="485.5"/>
+            <point key="canvasLocation" x="294" y="455"/>
         </scene>
     </scenes>
 </document>

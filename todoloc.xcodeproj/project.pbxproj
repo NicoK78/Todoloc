@@ -15,7 +15,7 @@
 		0334322B1FF5AA930017835C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033432291FF5AA930017835C /* Interface.storyboard */; };
 		0334322D1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334322C1FF5AA930017835C /* Assets.xcassets */; };
 		033432341FF5AA930017835C /* todoloc WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		033432391FF5AA930017835C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432381FF5AA930017835C /* InterfaceController.swift */; };
+		033432391FF5AA930017835C /* ElementsListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033432381FF5AA930017835C /* ElementsListInterfaceController.swift */; };
 		0334323B1FF5AA930017835C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334323A1FF5AA930017835C /* ExtensionDelegate.swift */; };
 		0334323D1FF5AA930017835C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334323C1FF5AA930017835C /* NotificationController.swift */; };
 		0334323F1FF5AA930017835C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0334323E1FF5AA930017835C /* Assets.xcassets */; };
@@ -29,10 +29,14 @@
 		79B7E8B620116B8F00D5726D /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7E8B420116B8F00D5726D /* DetailViewController.xib */; };
 		D318DF75201209850075DAE9 /* ElementListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D318DF73201209830075DAE9 /* ElementListTableViewCell.xib */; };
 		D318DF76201209850075DAE9 /* ElementListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318DF74201209840075DAE9 /* ElementListTableViewCell.swift */; };
+		D31F7F222012D30E003FCF07 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F7F212012D30E003FCF07 /* TaskModel.swift */; };
+		D338265920115D1400B00013 /* DetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338265820115D1400B00013 /* DetailInterfaceController.swift */; };
 		D33A6DE0200EB10400A1F995 /* AddTodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33A6DDC200EB10400A1F995 /* AddTodoViewController.xib */; };
 		D33A6DE1200EB10400A1F995 /* AddDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */; };
 		D33A6DE2200EB10400A1F995 /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */; };
 		D33A6DE3200EB10400A1F995 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */; };
+		D376A57C201260E5005E7907 /* TodoListsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A57B201260E5005E7907 /* TodoListsRowController.swift */; };
+		D3D5FCD620122EE900A8CA6E /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +93,7 @@
 		0334322C1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0334322E1FF5AA930017835C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033432331FF5AA930017835C /* todoloc WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "todoloc WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		033432381FF5AA930017835C /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		033432381FF5AA930017835C /* ElementsListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsListInterfaceController.swift; sourceTree = "<group>"; };
 		0334323A1FF5AA930017835C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		0334323C1FF5AA930017835C /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		0334323E1FF5AA930017835C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,10 +109,14 @@
 		79B7E8B420116B8F00D5726D /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D318DF73201209830075DAE9 /* ElementListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElementListTableViewCell.xib; sourceTree = "<group>"; };
 		D318DF74201209840075DAE9 /* ElementListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementListTableViewCell.swift; sourceTree = "<group>"; };
+		D31F7F212012D30E003FCF07 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		D338265820115D1400B00013 /* DetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInterfaceController.swift; sourceTree = "<group>"; };
 		D33A6DDC200EB10400A1F995 /* AddTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTodoViewController.xib; sourceTree = "<group>"; };
 		D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDetailViewController.xib; sourceTree = "<group>"; };
 		D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
 		D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		D376A57B201260E5005E7907 /* TodoListsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsRowController.swift; sourceTree = "<group>"; };
+		D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,14 +196,26 @@
 		033432371FF5AA930017835C /* todoloc WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				033432381FF5AA930017835C /* InterfaceController.swift */,
+				D33826572011586F00B00013 /* Models */,
+				033432381FF5AA930017835C /* ElementsListInterfaceController.swift */,
 				0334323A1FF5AA930017835C /* ExtensionDelegate.swift */,
 				0334323C1FF5AA930017835C /* NotificationController.swift */,
 				0334323E1FF5AA930017835C /* Assets.xcassets */,
 				033432401FF5AA930017835C /* Info.plist */,
 				033432411FF5AA930017835C /* PushNotificationPayload.apns */,
+				D338265820115D1400B00013 /* DetailInterfaceController.swift */,
+				D376A57B201260E5005E7907 /* TodoListsRowController.swift */,
 			);
 			path = "todoloc WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D33826572011586F00B00013 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */,
+				D31F7F212012D30E003FCF07 /* TaskModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,8 +376,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0334323D1FF5AA930017835C /* NotificationController.swift in Sources */,
+				D376A57C201260E5005E7907 /* TodoListsRowController.swift in Sources */,
 				0334323B1FF5AA930017835C /* ExtensionDelegate.swift in Sources */,
-				033432391FF5AA930017835C /* InterfaceController.swift in Sources */,
+				D338265920115D1400B00013 /* DetailInterfaceController.swift in Sources */,
+				D3D5FCD620122EE900A8CA6E /* TodoListModel.swift in Sources */,
+				033432391FF5AA930017835C /* ElementsListInterfaceController.swift in Sources */,
+				D31F7F222012D30E003FCF07 /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
