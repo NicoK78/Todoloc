@@ -82,6 +82,17 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         return true
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = TodoModel()
+        todo.titre = self.todos[indexPath.item].titre
+        todo.taches = self.todos[indexPath.item].taches // A refaire
+        
+        let detailController = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        detailController.todom = todo
+        
+        self.navigationController?.pushViewController(detailController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             print("delete button tapped")
