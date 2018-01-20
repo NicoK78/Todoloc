@@ -73,7 +73,12 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCellIdentifier", for: indexPath)
         if let accessoryCell = cell as? ElementListTableViewCell {
             accessoryCell.label.text = self.todos[indexPath.item].titre
-            accessoryCell.labelSousTitre.text = self.todos[indexPath.item].taches?[0]
+            if (self.todos[indexPath.item].taches?.count)! <= 0 {
+                accessoryCell.labelSousTitre.text = "Done"
+            }else{
+                accessoryCell.labelSousTitre.text = self.todos[indexPath.item].taches?[0]
+            }
+            
         }
         return cell
     }
@@ -83,12 +88,8 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let todo = TodoModel()
-        todo.titre = self.todos[indexPath.item].titre
-        todo.taches = self.todos[indexPath.item].taches // A refaire
-        
         let detailController = DetailViewController(nibName: "DetailViewController", bundle: nil)
-        detailController.todom = todo
+        detailController.todo = self.todos[indexPath.item]
         
         self.navigationController?.pushViewController(detailController, animated: true)
     }

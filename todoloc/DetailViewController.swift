@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var todom : TodoModel? = nil
+    var todo:Todo? = nil
     @IBOutlet var listView: UITableView!
     
     @IBOutlet var labelTitre: UILabel!
@@ -19,8 +19,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.listView.dataSource = self
-        
-        self.labelTitre.text = self.todom?.titre
+        self.listView.delegate = self
+        self.labelTitre.text = self.todo?.titre
         // Do any additional setup after loading the view.
     }
 
@@ -42,15 +42,15 @@ class DetailViewController: UIViewController {
 
 }
 
-extension DetailViewController:UITableViewDataSource{
+extension DetailViewController:UITableViewDataSource ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.todom?.taches?.count)!
+        return (self.todo?.taches?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = self.todom?.taches![indexPath.item]
+        cell.textLabel?.text = self.todo?.taches![indexPath.item]
         
         return cell
     }
@@ -59,4 +59,21 @@ extension DetailViewController:UITableViewDataSource{
         return 1
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            self.todo?.taches?.remove(at: index.item)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            self.listView.reloadData()
+        }
+        delete.backgroundColor = .red
+        
+        return [delete]
+    }
+    
+    
 }
+
