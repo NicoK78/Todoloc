@@ -37,6 +37,8 @@
 		D33A6DE1200EB10400A1F995 /* AddDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */; };
 		D33A6DE2200EB10400A1F995 /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */; };
 		D33A6DE3200EB10400A1F995 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */; };
+		D36B6B8C2019403500BE3BAF /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B6B8B2019403500BE3BAF /* TodoListModel.swift */; };
+		D36B6B8E2019405100BE3BAF /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36B6B8D2019405100BE3BAF /* TaskModel.swift */; };
 		D376A57C201260E5005E7907 /* TodoListsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A57B201260E5005E7907 /* TodoListsRowController.swift */; };
 		D3D5FCD620122EE900A8CA6E /* TodoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */; };
 /* End PBXBuildFile section */
@@ -119,6 +121,8 @@
 		D33A6DDD200EB10400A1F995 /* AddDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDetailViewController.xib; sourceTree = "<group>"; };
 		D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
 		D33A6DDF200EB10400A1F995 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		D36B6B8B2019403500BE3BAF /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
+		D36B6B8D2019405100BE3BAF /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		D376A57B201260E5005E7907 /* TodoListsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsRowController.swift; sourceTree = "<group>"; };
 		D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +172,7 @@
 		033432141FF5AA930017835C /* todoloc */ = {
 			isa = PBXGroup;
 			children = (
+				D36B6B8A2019400700BE3BAF /* Models */,
 				D318DF74201209840075DAE9 /* ElementListTableViewCell.swift */,
 				D318DF73201209830075DAE9 /* ElementListTableViewCell.xib */,
 				D33A6DDE200EB10400A1F995 /* AddDetailViewController.swift */,
@@ -220,6 +225,15 @@
 			children = (
 				D3D5FCD520122EE900A8CA6E /* TodoListModel.swift */,
 				D31F7F212012D30E003FCF07 /* TaskModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D36B6B8A2019400700BE3BAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D36B6B8B2019403500BE3BAF /* TodoListModel.swift */,
+				D36B6B8D2019405100BE3BAF /* TaskModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,10 +382,12 @@
 				D318DF76201209850075DAE9 /* ElementListTableViewCell.swift in Sources */,
 				79853FB120115D6F00849711 /* Todo+CoreDataProperties.swift in Sources */,
 				79B7E8B2201167EC00D5726D /* TodoModel.swift in Sources */,
+				D36B6B8C2019403500BE3BAF /* TodoListModel.swift in Sources */,
 				79853FB020115D6F00849711 /* Todo+CoreDataClass.swift in Sources */,
 				D33A6DE3200EB10400A1F995 /* AddTodoViewController.swift in Sources */,
 				79853F9D20115BB500849711 /* todoloc.xcdatamodeld in Sources */,
 				033432511FF5B8A40017835C /* ElementsListViewController.swift in Sources */,
+				D36B6B8E2019405100BE3BAF /* TaskModel.swift in Sources */,
 				033432161FF5AA930017835C /* AppDelegate.swift in Sources */,
 				03A4D6F020192B0800598155 /* Task+CoreDataProperties.swift in Sources */,
 				03A4D6EF20192B0800598155 /* Task+CoreDataClass.swift in Sources */,

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import WatchConnectivity
+import CoreData
 
 class ElementsListViewController: UIViewController, UITableViewDataSource , UITableViewDelegate, CLLocationManagerDelegate {
     
@@ -18,9 +20,12 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let session = WCSession.default
+    let jsonEncoder = JSONEncoder()
+    
     var todos: [Todo] = []
     var locationManager: CLLocationManager!
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             let geocoder = CLGeocoder()
@@ -47,13 +52,15 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     }
     
     override func viewDidLoad() {
+        // Do any additional setup after loading the view.
         super.viewDidLoad()
         getTodo()
         self.tableView.register(UINib(nibName:"ElementListTableViewCell",bundle:nil), forCellReuseIdentifier: "reuseCellIdentifier")
         
-
+        
         tableView.dataSource = self
         tableView.delegate = self
+        
         
         if CLLocationManager.locationServicesEnabled() {
             let manager = CLLocationManager()
@@ -63,6 +70,40 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
             self.locationManager = manager
         }
         // Do any additional setup after loading the view.
+        
+        guard session.isPaired && session.isWatchAppInstalled else {
+            return
+        }
+        sendTasksLists()
+    }
+    
+    func fetchTasksLists() -> Data? {
+        do {
+            let todolistsEntities: [Todo] = try self.context.fetch(Todo.fetchRequest())
+            var todolists: [TodoListModel] = []
+            for list in todolistsEntities {
+                let listm = TodoListModel(entity:list)
+                todolists.append(listm)
+            }
+            return try self.jsonEncoder.encode(todolists)
+        } catch {
+            print("iOS> Failed sending to watchapp")
+        }
+        return nil
+    }
+    
+    func sendTasksLists() {
+        if let json = fetchTasksLists() {
+            self.session.sendMessageData(json, replyHandler: { (data) in
+                // Handle replies
+                print("iOS> Send todolists> Got reply: \(data)")
+            }, errorHandler: { (err) in
+                // Handle errors
+                print("iOS> Send todolists> Got error: \(err)")
+            })
+        } else {
+            print("Could not fetch the todo lists")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +144,7 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCellIdentifier", for: indexPath)
         if let accessoryCell = cell as? ElementListTableViewCell {
-        
+            
             accessoryCell.label.text = self.todos[indexPath.item].title
             if (self.todos[indexPath.item].tasks?.count)! <= 0 {
                 accessoryCell.labelSousTitre.text = "Done"
@@ -140,5 +181,5 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         return [delete]
     }
     
-
+    
 }
