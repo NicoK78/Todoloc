@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreData
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let jsonDecoder: JSONDecoder = JSONDecoder()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -21,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = UINavigationController(rootViewController: ElementsListViewController())
         window.makeKeyAndVisible()
         self.window = window
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+        
         return true
     }
 
@@ -90,8 +98,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
-
 }
 
+extension AppDelegate: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        do {
+            let task = try jsonDecoder.decode(TaskModel.self, from: messageData)
+            
+            print("iOS> Successfully decoded")
+            print(task.name)
+        } catch {
+            print("iOS> Failed while decoding a task")
+        }
+    }
+}

@@ -7,11 +7,19 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    
+    let jsonDecoder: JSONDecoder = JSONDecoder()
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
     }
 
     func applicationDidBecomeActive() {
@@ -47,4 +55,26 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
+}
+
+extension ExtensionDelegate: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        //let json = String(data: messageData, encoding: .utf8) as String!
+        do {
+            let todoLists = try jsonDecoder.decode([TodoListModel].self, from: messageData)
+            
+            print("WatchOS> Successfully decoded")
+            for list in todoLists {
+                print(list.title)
+            }
+        } catch {
+            print("WatchOS> Failed while decoding todolists")
+        }
+        
+    }
 }

@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 class ElementsListInterfaceController: WKInterfaceController {
     
@@ -17,15 +18,27 @@ class ElementsListInterfaceController: WKInterfaceController {
     
     // Optional to simulate
     let todos: [TodoListModel]? = [
-        TodoListModel(titre: "Test", tasks: [TaskModel(name: "Tache 1"), TaskModel(name: "Tache débile")]),
-        TodoListModel(titre: "Loltest", tasks: [TaskModel(name: "lol 1"), TaskModel(name: "lol débile")])
+        TodoListModel(title: "Test", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
+                      tasks: [TaskModel(name: "Tache 1"), TaskModel(name: "Tache débile")]),
+        TodoListModel(title: "Loltest", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
+                      tasks: [TaskModel(name: "lol 1"), TaskModel(name: "lol débile")])
     ]
+    
+    let jsonEncoder: JSONEncoder = JSONEncoder()
+    let jsonDecoder: JSONDecoder = JSONDecoder()
 
     
     // -- LIFECYCLE METHODS
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        self.jsonEncoder.outputFormatting = .prettyPrinted
+        do {
+            let  data = try self.jsonEncoder.encode(todos)
+            print(String(data: data, encoding: .utf8)!)
+        } catch {
+            
+        }
         
         // Configure interface objects here.
         reloadTodoLists()
@@ -34,6 +47,9 @@ class ElementsListInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        let session = WCSession.default
+        session.delegate = self
+        session.activate()
     }
     
     override func didDeactivate() {
@@ -68,7 +84,7 @@ class ElementsListInterfaceController: WKInterfaceController {
                     return
                 }
                 
-                mapController.listTitle.setText(todoLists[index].titre)
+                mapController.listTitle.setText(todoLists[index].title)
             }
             
         } else {
@@ -77,3 +93,26 @@ class ElementsListInterfaceController: WKInterfaceController {
     }
 
 }
+
+// -- EXTENSION: CONNECTIVITY
+extension ElementsListInterfaceController: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        //let json = String(data: messageData, encoding: .utf8) as String!
+        do {
+            let todoLists = try jsonDecoder.decode([TodoListModel].self, from: messageData)
+            
+            print("WatchOS> Successfully decoded")
+            for list in todoLists {
+                print(list.title)
+            }
+        } catch {
+            print("WatchOS> Failed while decoding todolists")
+        }
+        
+    }
+}
+

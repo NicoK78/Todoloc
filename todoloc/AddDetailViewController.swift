@@ -12,7 +12,7 @@ import CoreData
 
 class AddDetailViewController: UIViewController, UISearchBarDelegate {
 
-    var todom : TodoModel? = nil
+    var todom : TodoListModel? = nil
     
 
     @IBOutlet var mapView: MKMapView!
@@ -31,8 +31,8 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.todom?.titre)
-        print(self.todom?.taches)
+        print(self.todom?.title ?? "")
+        print(self.todom?.tasks ?? "")
         //self.navigationItem.title = self.todo?.nom
         // Do any additional setup after loading the view.
         let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchAdresse))
@@ -79,7 +79,7 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let todo = Todo(context: context)
         
-        todo.title = self.todom?.titre
+        todo.title = self.todom?.title
         todo.address = pointAnnotation.description
         todo.longitude = pointAnnotation.coordinate.longitude
         todo.latitude = pointAnnotation.coordinate.latitude
@@ -87,8 +87,16 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         let aTask = Task(context: context)
         let mutable = NSMutableSet()
 
-        for str in (self.todom?.taches)! {
-            aTask.name = str
+        guard self.todom != nil else {
+            print("nilcheck: todom")
+            return
+        }
+        guard self.todom?.tasks != nil else {
+            print("nilcheck: tasks")
+            return
+        }
+        for task in (self.todom?.tasks)! {
+            aTask.name = task.name
             aTask.finished = false
             aTask.detail = "Details"
             

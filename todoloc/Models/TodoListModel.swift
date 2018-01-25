@@ -13,8 +13,8 @@ public class TodoListModel: Codable {
     
     public var title: String = ""
     public var tasks: [TaskModel]? = []
-    public var latitude: Double = 0.0
-    public var longitude: Double = 0.0
+    public var latitude: Double = 0.1
+    public var longitude: Double = 0.1
     public var address: String = ""
     
     public var finished: Bool = false

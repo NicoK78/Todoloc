@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import WatchConnectivity
+import CoreData
 
 class ElementsListViewController: UIViewController, UITableViewDataSource , UITableViewDelegate, CLLocationManagerDelegate {
     
@@ -18,6 +20,9 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let session = WCSession.default
+    let jsonEncoder = JSONEncoder()
+
     var todos: [Todo] = []
     var locationManager: CLLocationManager!
 
@@ -47,6 +52,7 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     }
     
     override func viewDidLoad() {
+        // Do any additional setup after loading the view.
         super.viewDidLoad()
         getTodo()
         self.tableView.register(UINib(nibName:"ElementListTableViewCell",bundle:nil), forCellReuseIdentifier: "reuseCellIdentifier")
@@ -55,6 +61,7 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         tableView.dataSource = self
         tableView.delegate = self
         
+
         if CLLocationManager.locationServicesEnabled() {
             let manager = CLLocationManager()
             manager.delegate = self
@@ -63,6 +70,29 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
             self.locationManager = manager
         }
         // Do any additional setup after loading the view.
+
+        guard session.isPaired && session.isWatchAppInstalled else {
+            return
+        }
+        /*
+        do {
+            let todolists = try context.fetch(Todo.fetchRequest())
+            let json = try jsonEncoder.encode(todolists)
+            session.sendMessageData(json, replyHandler: { (data) in
+                // Handle replies
+                print("iOS> Got reply: \(data)")
+            }, errorHandler: { (err) in
+                // Handle errors
+                print("iOS> Got error: \(err)")
+            })
+
+        } catch {
+            print("iOS> Failed sending to watchapp")
+        }
+ */
+        
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
