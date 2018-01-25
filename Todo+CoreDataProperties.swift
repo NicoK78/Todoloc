@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.swift
 //  todoloc
 //
-//  Created by Selom Viadenou on 18/01/2018.
+//  Created by Nico on 24/01/2018.
 //  Copyright © 2018 Nico. All rights reserved.
 //
 //
@@ -17,7 +17,27 @@ extension Todo {
         return NSFetchRequest<Todo>(entityName: "Todo")
     }
 
-    @NSManaged public var titre: String?
-    @NSManaged public var taches: [String]?
+    @NSManaged public var title: String?
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
+    @NSManaged public var address: String?
+    @NSManaged public var tasks: NSSet?
+
+}
+
+// MARK: Generated accessors for tasks
+extension Todo {
+
+    @objc(addTasksObject:)
+    @NSManaged public func addToTasks(_ value: Task)
+
+    @objc(removeTasksObject:)
+    @NSManaged public func removeFromTasks(_ value: Task)
+
+    @objc(addTasks:)
+    @NSManaged public func addToTasks(_ values: NSSet)
+
+    @objc(removeTasks:)
+    @NSManaged public func removeFromTasks(_ values: NSSet)
 
 }

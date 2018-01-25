@@ -21,12 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NOY-gm-2e3">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NOY-gm-2e3">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="NOY-gm-2e3" firstAttribute="trailing" secondItem="poQ-Rl-3Rn" secondAttribute="trailing" id="G0Y-MU-4dM"/>
+                <constraint firstItem="NOY-gm-2e3" firstAttribute="bottom" secondItem="poQ-Rl-3Rn" secondAttribute="bottom" id="bbI-dt-mwK"/>
+                <constraint firstItem="NOY-gm-2e3" firstAttribute="leading" secondItem="poQ-Rl-3Rn" secondAttribute="leading" id="m16-At-EZ5"/>
+                <constraint firstItem="NOY-gm-2e3" firstAttribute="top" secondItem="56q-pZ-1uZ" secondAttribute="top" id="uJB-4f-tBZ"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="poQ-Rl-3Rn"/>
             <point key="canvasLocation" x="188.5" y="-255.5"/>
         </view>

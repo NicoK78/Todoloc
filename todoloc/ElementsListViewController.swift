@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ElementsListViewController: UIViewController, UITableViewDataSource , UITableViewDelegate {
+class ElementsListViewController: UIViewController, UITableViewDataSource , UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var navvigationItem: UINavigationItem!
     
@@ -18,8 +19,32 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var todos: [Todo] = []
+    var locationManager: CLLocationManager!
 
-    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks: [CLPlacemark]?, error: Error?) in
+                if error == nil {
+                    if let placemarks = placemarks {
+                        for placemark in placemarks {
+                            for aTodo in  self.todos {
+                                
+                                let value: Double = (aTodo.latitude - (placemark.location?.coordinate.latitude)!)*(aTodo.latitude - (placemark.location?.coordinate.latitude)!) + (aTodo.longitude - (placemark.location?.coordinate.longitude)!)*(aTodo.longitude - (placemark.location?.coordinate.longitude)!)
+                                if value.squareRoot() < 0.5 {
+                                    print("VOUS ETES DANS LA ZONE DE : " + aTodo.address!)
+                                }
+                            }
+                            print("#################")
+                            print(placemark.location?.coordinate.latitude)
+                            print(placemark.location?.coordinate.longitude)
+                            print("#################")
+                        }
+                    }
+                }
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +55,13 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
         tableView.dataSource = self
         tableView.delegate = self
         
-        
+        if CLLocationManager.locationServicesEnabled() {
+            let manager = CLLocationManager()
+            manager.delegate = self
+            manager.requestWhenInUseAuthorization()
+            manager.startUpdatingLocation()
+            self.locationManager = manager
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -72,11 +103,13 @@ class ElementsListViewController: UIViewController, UITableViewDataSource , UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCellIdentifier", for: indexPath)
         if let accessoryCell = cell as? ElementListTableViewCell {
-            accessoryCell.label.text = self.todos[indexPath.item].titre
-            if (self.todos[indexPath.item].taches?.count)! <= 0 {
+        
+            accessoryCell.label.text = self.todos[indexPath.item].title
+            if (self.todos[indexPath.item].tasks?.count)! <= 0 {
                 accessoryCell.labelSousTitre.text = "Done"
             }else{
-                accessoryCell.labelSousTitre.text = self.todos[indexPath.item].taches?[0]
+                let aTask: Task = self.todos[indexPath.item].tasks?.allObjects[0] as! Task
+                accessoryCell.labelSousTitre.text = aTask.name
             }
             
         }

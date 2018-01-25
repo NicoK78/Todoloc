@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.listView.dataSource = self
         self.listView.delegate = self
-        self.labelTitre.text = self.todo?.titre
+        self.labelTitre.text = self.todo?.title
         // Do any additional setup after loading the view.
     }
 
@@ -44,13 +44,16 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController:UITableViewDataSource ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.todo?.taches?.count)!
+//        return (self.todo?.taches?.count)!
+        return (self.todo?.tasks?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = self.todo?.taches![indexPath.item]
+//        cell.textLabel?.text = self.todo?.taches![indexPath.item]
+        let task: Task = self.todo?.tasks?.allObjects[indexPath.item] as! Task
+        cell.textLabel?.text = task.name
         
         return cell
     }
@@ -65,7 +68,12 @@ extension DetailViewController:UITableViewDataSource ,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            self.todo?.taches?.remove(at: index.item)
+
+//            self.todo?.taches?.remove(at: index.item)
+            let mutableSet: NSMutableSet = self.todo?.tasks as! NSMutableSet
+            mutableSet.remove(self.todo?.tasks?.allObjects[index.item])
+            self.todo?.tasks = mutableSet
+
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             self.listView.reloadData()
         }
