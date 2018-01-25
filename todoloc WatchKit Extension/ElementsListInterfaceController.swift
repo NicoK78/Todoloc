@@ -37,7 +37,7 @@ class ElementsListInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        reloadTodoLists()
+        requestTodolists()
     }
     
     override func willActivate() {
@@ -119,9 +119,11 @@ extension ElementsListInterfaceController: WCSessionDelegate {
             
             self.todos = todoLists
             reloadTodoLists()
+            replyHandler("WatchOS IC> Did receive todolists".data(using: String.Encoding.utf8)!)
             
         } catch {
             print("WatchOS IC> Receive todolists> Failed while decoding todolists")
+            replyHandler("WatchOS IC> Receive todolists> Failed while decoding todolists".data(using: String.Encoding.utf8)!)
         }
         
     }

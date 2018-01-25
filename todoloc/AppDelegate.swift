@@ -178,16 +178,23 @@ extension AppDelegate: WCSessionDelegate {
                     replyHandler(todolists)
                 } else {
                     print("Error while fetching task lists")
+                    replyHandler("Error while fetching task lists".data(using: String.Encoding.utf8)!)
                 }
                 
             } else {
                 print("iOS> Receive task's uuid> Successfully red uuid(\(msg)")
                 let result = updateTask(uuid: msg)
                 let str = "Setting the task status to complete is a \(result ? "success": "failure")".data(using: String.Encoding.utf8)
-                replyHandler(str!)
+                if result {
+                    replyHandler(str!)
+                } else {
+                    print("iOS> Receive task's uuid> Failed while reading uuid")
+                    replyHandler("iOS> Receive task's uuid> Failed while reading uuid".data(using: String.Encoding.utf8)!)
+                }
             }
         } else {
-            print("iOS> Receive task's uuid> Failed while reading uuid")
+            print("iOS> Unknown request")
+            replyHandler("iOS> Unknown request".data(using: String.Encoding.utf8)!)
         }
     }
 }
