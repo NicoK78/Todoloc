@@ -9,6 +9,7 @@
 import Foundation
 
 public class TaskModel: Codable {
+    var id: String = ""
     var name: String = ""
     var detail: String = ""
     var finished: Bool = false
@@ -23,5 +24,10 @@ public class TaskModel: Codable {
         self.finished = completed
     }
     
-    
+    init(entity: Task) {
+        self.id = (entity.id?.uuidString)!
+        self.name = entity.name!
+        self.detail = entity.detail!
+        self.finished = entity.finished
+    }
 }

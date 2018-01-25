@@ -72,19 +72,19 @@ class DetailInterfaceController: WKInterfaceController {
     // -- CONNECTIVITY METHODS
     
     func sendTaskComplete(task: TaskModel) {
-        do {
-            let json = try jsonEncoder.encode(task)
-            session.sendMessageData(json, replyHandler: { (data) in
-                // Handle replies
-                print("Got reply: \(data)")
-            }, errorHandler: { (err) in
-                // Handle errors
-                print("Got error: \(err)")
-            })
-        } catch {
-            print("Failed serialization")
+        //let json = try jsonEncoder.encode(task)
+        guard !task.id.isEmpty else {
+            return
         }
-    }
+        let taskUuid = task.id.data(using: .utf8)
+        session.sendMessageData(taskUuid!, replyHandler: { (data) in
+            // Handle replies
+            print("WatchOS> sendTaskComplete> Got reply: \(data)")
+        }, errorHandler: { (err) in
+            // Handle errors
+            print("WatchOS> sendTaskComplete> Got error: \(err)")
+        })
+}
     
     // -- OTHER METHODS
     

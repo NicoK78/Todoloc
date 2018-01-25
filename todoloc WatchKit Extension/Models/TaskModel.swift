@@ -9,6 +9,7 @@
 import Foundation
 
 public class TaskModel: Codable {
+    var id: String = ""
     var name: String = ""
     var detail: String = ""
     var finished: Bool = false

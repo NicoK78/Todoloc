@@ -63,6 +63,18 @@ public class TodoListModel: Codable {
         self.tasks = tasks
     }
     
+    init(entity: Todo) {
+        self.title = entity.title!
+        self.latitude = entity.latitude
+        self.longitude = entity.longitude
+        self.address = entity.address!
+        for task in entity.tasks! {
+            let taskm = TaskModel(entity: task as! Task)
+            self.tasks?.append(taskm)
+        }
+        
+    }
+    
     public func completeCurrentTask() {
         let index = self.currentTaskIndex
         self.tasks![index].finished = true

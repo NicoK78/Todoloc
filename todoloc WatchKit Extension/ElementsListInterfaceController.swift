@@ -17,13 +17,16 @@ class ElementsListInterfaceController: WKInterfaceController {
     @IBOutlet var homeTodoListsTable: WKInterfaceTable!
     
     // Optional to simulate
+    /*
     let todos: [TodoListModel]? = [
         TodoListModel(title: "Test", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
                       tasks: [TaskModel(name: "Tache 1"), TaskModel(name: "Tache débile")]),
         TodoListModel(title: "Loltest", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
                       tasks: [TaskModel(name: "lol 1"), TaskModel(name: "lol débile")])
     ]
-    
+     */
+    var todos: [TodoListModel]? = []
+
     let jsonEncoder: JSONEncoder = JSONEncoder()
     let jsonDecoder: JSONDecoder = JSONDecoder()
 
@@ -32,13 +35,6 @@ class ElementsListInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        self.jsonEncoder.outputFormatting = .prettyPrinted
-        do {
-            let  data = try self.jsonEncoder.encode(todos)
-            print(String(data: data, encoding: .utf8)!)
-        } catch {
-            
-        }
         
         // Configure interface objects here.
         reloadTodoLists()
@@ -74,6 +70,19 @@ class ElementsListInterfaceController: WKInterfaceController {
     }
     
     // -- OTHER METHODS
+    func requestTodolists() {
+        let session = WCSession.default
+        guard session.isReachable else {
+            print("WCSession not ready yet")
+            return
+        }
+        let data = "#READY#".data(using: .utf8)
+        session.sendMessageData(data!, replyHandler: { (reply) in
+            print("Reply: \(reply)")
+        }) { (err) in
+            print(err)
+        }
+    }
     
     fileprivate func reloadTodoLists() {
         if let todoLists = self.todos {
@@ -96,6 +105,7 @@ class ElementsListInterfaceController: WKInterfaceController {
 
 // -- EXTENSION: CONNECTIVITY
 extension ElementsListInterfaceController: WCSessionDelegate {
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
@@ -105,12 +115,13 @@ extension ElementsListInterfaceController: WCSessionDelegate {
         do {
             let todoLists = try jsonDecoder.decode([TodoListModel].self, from: messageData)
             
-            print("WatchOS> Successfully decoded")
-            for list in todoLists {
-                print(list.title)
-            }
+            print("WatchOS IC> Receive todolists> Successfully decoded")
+            
+            self.todos = todoLists
+            reloadTodoLists()
+            
         } catch {
-            print("WatchOS> Failed while decoding todolists")
+            print("WatchOS IC> Receive todolists> Failed while decoding todolists")
         }
         
     }
