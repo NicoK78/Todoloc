@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 class ElementsListInterfaceController: WKInterfaceController {
     
@@ -16,10 +17,18 @@ class ElementsListInterfaceController: WKInterfaceController {
     @IBOutlet var homeTodoListsTable: WKInterfaceTable!
     
     // Optional to simulate
+    /*
     let todos: [TodoListModel]? = [
-        TodoListModel(titre: "Test", tasks: [TaskModel(name: "Tache 1"), TaskModel(name: "Tache débile")]),
-        TodoListModel(titre: "Loltest", tasks: [TaskModel(name: "lol 1"), TaskModel(name: "lol débile")])
+        TodoListModel(title: "Test", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
+                      tasks: [TaskModel(name: "Tache 1"), TaskModel(name: "Tache débile")]),
+        TodoListModel(title: "Loltest", latitude: 1.0, longitude: 1.0, address: "2 rue du moulin 93170",
+                      tasks: [TaskModel(name: "lol 1"), TaskModel(name: "lol débile")])
     ]
+     */
+    var todos: [TodoListModel]? = []
+
+    let jsonEncoder: JSONEncoder = JSONEncoder()
+    let jsonDecoder: JSONDecoder = JSONDecoder()
 
     
     // -- LIFECYCLE METHODS
@@ -28,12 +37,15 @@ class ElementsListInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        reloadTodoLists()
+        requestTodolists()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        let session = WCSession.default
+        session.delegate = self
+        session.activate()
     }
     
     override func didDeactivate() {
@@ -58,6 +70,19 @@ class ElementsListInterfaceController: WKInterfaceController {
     }
     
     // -- OTHER METHODS
+    func requestTodolists() {
+        let session = WCSession.default
+        guard session.isReachable else {
+            print("WCSession not ready yet")
+            return
+        }
+        let data = "#READY#".data(using: .utf8)
+        session.sendMessageData(data!, replyHandler: { (reply) in
+            print("Reply: \(reply)")
+        }) { (err) in
+            print(err)
+        }
+    }
     
     fileprivate func reloadTodoLists() {
         if let todoLists = self.todos {
@@ -68,7 +93,7 @@ class ElementsListInterfaceController: WKInterfaceController {
                     return
                 }
                 
-                mapController.listTitle.setText(todoLists[index].titre)
+                mapController.listTitle.setText(todoLists[index].title)
             }
             
         } else {
@@ -77,3 +102,30 @@ class ElementsListInterfaceController: WKInterfaceController {
     }
 
 }
+
+// -- EXTENSION: CONNECTIVITY
+extension ElementsListInterfaceController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        //let json = String(data: messageData, encoding: .utf8) as String!
+        do {
+            let todoLists = try jsonDecoder.decode([TodoListModel].self, from: messageData)
+            
+            print("WatchOS IC> Receive todolists> Successfully decoded")
+            
+            self.todos = todoLists
+            reloadTodoLists()
+            replyHandler("WatchOS IC> Did receive todolists".data(using: String.Encoding.utf8)!)
+            
+        } catch {
+            print("WatchOS IC> Receive todolists> Failed while decoding todolists")
+            replyHandler("WatchOS IC> Receive todolists> Failed while decoding todolists".data(using: String.Encoding.utf8)!)
+        }
+        
+    }
+}
+

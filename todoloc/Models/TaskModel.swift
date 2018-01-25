@@ -24,5 +24,10 @@ public class TaskModel: Codable {
         self.finished = completed
     }
     
-    
+    init(entity: Task) {
+        self.id = (entity.id?.uuidString)!
+        self.name = entity.name!
+        self.detail = entity.detail!
+        self.finished = entity.finished
+    }
 }

@@ -13,6 +13,9 @@ import WatchConnectivity
 class DetailInterfaceController: WKInterfaceController {
    
     // -- FIELDS
+    let session = WCSession.default
+    let jsonEncoder = JSONEncoder()
+    
     @IBOutlet var taskDescription: WKInterfaceLabel!
     
     var list: TodoListModel?
@@ -47,8 +50,11 @@ class DetailInterfaceController: WKInterfaceController {
     // -- UI ACTIONS
     @IBAction func onCompleteTouch() {
         // Setting the task completed
+        let completedTask = self.task!
         self.list?.completeCurrentTask()
         print("Finished ? \((self.list?.finished)!)")
+        sendTaskComplete(task: completedTask)
+
         if (self.list?.finished)! {
             presentAlert(withTitle: "Bravo !", message: "You just finished the last task !", preferredStyle: WKAlertControllerStyle.alert, actions: [WKAlertAction(title: "Done", style: WKAlertActionStyle.default, handler: {
                 self.dismiss()
@@ -63,7 +69,24 @@ class DetailInterfaceController: WKInterfaceController {
         dismiss()
     }
     
-    // OTHER METHODS
+    // -- CONNECTIVITY METHODS
+    
+    func sendTaskComplete(task: TaskModel) {
+        //let json = try jsonEncoder.encode(task)
+        guard !task.id.isEmpty else {
+            return
+        }
+        let taskUuid = task.id.data(using: .utf8)
+        session.sendMessageData(taskUuid!, replyHandler: { (data) in
+            // Handle replies
+            print("WatchOS> sendTaskComplete> Got reply: \(data)")
+        }, errorHandler: { (err) in
+            // Handle errors
+            print("WatchOS> sendTaskComplete> Got error: \(err)")
+        })
+}
+    
+    // -- OTHER METHODS
     
     // Called every time the task field is set
     func loadTask() {

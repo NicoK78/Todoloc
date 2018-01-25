@@ -7,11 +7,17 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        let session = WCSession.default
+        session.delegate = self
+        session.activate()
+        
+        
     }
 
     func applicationDidBecomeActive() {
@@ -47,4 +53,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
 
+}
+
+extension ExtensionDelegate: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        guard session.isReachable else {
+            print("WCSession not ready yet")
+            return
+        }
+        let data = "#READY#".data(using: .utf8)
+        session.sendMessageData(data!, replyHandler: { (reply) in
+            print(reply)
+        }) { (err) in
+            print(err)
+        }
+    }
+    
+    
 }

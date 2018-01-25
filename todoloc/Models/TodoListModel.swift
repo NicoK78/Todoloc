@@ -13,8 +13,8 @@ public class TodoListModel: Codable {
     
     public var title: String = ""
     public var tasks: [TaskModel]? = []
-    public var latitude: Double = 0.0
-    public var longitude: Double = 0.0
+    public var latitude: Double = 0.1
+    public var longitude: Double = 0.1
     public var address: String = ""
     
     public var finished: Bool = false
@@ -61,6 +61,18 @@ public class TodoListModel: Codable {
         self.longitude = longitude
         self.address = address
         self.tasks = tasks
+    }
+    
+    init(entity: Todo) {
+        self.title = entity.title!
+        self.latitude = entity.latitude
+        self.longitude = entity.longitude
+        self.address = entity.address!
+        for task in entity.tasks! {
+            let taskm = TaskModel(entity: task as! Task)
+            self.tasks?.append(taskm)
+        }
+        
     }
     
     public func completeCurrentTask() {

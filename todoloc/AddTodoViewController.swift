@@ -11,9 +11,9 @@ import MapKit
 import CoreLocation
 
 class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
-    var todom : TodoModel? = nil
+    var todom : TodoListModel? = nil
     
-    var tabDetail:[String] = []
+    var tabDetail:[TaskModel] = []
     var locationManager:CLLocationManager!
     var initialLocation:CLLocation!
     
@@ -31,7 +31,7 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.detailListView.dataSource = self
-        todom = TodoModel()
+        todom = TodoListModel()
         
         // Do any additional setup after loading the view.
         let nextButton = UIBarButtonItem(title: "Passer", style: .plain, target: self, action: #selector(nextEtape(_:)))
@@ -42,7 +42,8 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
     
     @IBAction func addDetail(_ sender: Any) {
         if((self.textFieldDetail.text) != nil && self.textFieldDetail.text != ""){
-            self.tabDetail.append(self.textFieldDetail.text!)
+            let task = TaskModel(name: self.textFieldDetail.text!)
+            self.tabDetail.append(task)
             self.textFieldDetail.text = ""
             self.detailListView.reloadData()
         }
@@ -60,7 +61,7 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
         if(self.changeTitreTextField?.text != ""){
             self.navigationItem.rightBarButtonItem?.isEnabled = true;
             self.navigationItem.title = self.changeTitreTextField?.text
-            self.todom?.titre = (self.changeTitreTextField?.text)!
+            self.todom?.title = (self.changeTitreTextField?.text)!
         }
         if(self.changeTitreTextField?.text == nil){
             self.navigationItem.rightBarButtonItem?.isEnabled = false;
@@ -86,8 +87,8 @@ class AddTodoViewController: UIViewController , CLLocationManagerDelegate {
     }
     
     @objc func nextEtape(_ sender:AnyObject){
-        self.todom?.titre = (changeTitreTextField?.text)!
-        self.todom?.taches = self.tabDetail
+        self.todom?.title = (changeTitreTextField?.text)!
+        self.todom?.tasks = self.tabDetail
         
         print((changeTitreTextField?.text)!)
         print(self.tabDetail)
@@ -159,7 +160,7 @@ extension AddTodoViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = self.tabDetail[indexPath.item]
+        cell.textLabel?.text = self.tabDetail[indexPath.item].name
         
         return cell
     }
