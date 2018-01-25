@@ -28,7 +28,6 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
     
     var resultSearchController:UISearchController? = nil
     
-    @IBOutlet var resultView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,6 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
 //        let locationSearchTable = self.storyboard!.instantiateViewController(withIdentifier: "LocationSearchTableViewController") as! AddDetailViewController
 //        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
 //        resultSearchController?.searchResultsUpdater = locationSearchTable as! UISearchResultsUpdating
-        resultView.isHidden = false
         
         searchController = UISearchController(searchResultsController: resultSearchController)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -71,7 +69,6 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
     @objc func rechercheDone(){
         let elementListView = ElementsListViewController(nibName: "ElementsListViewController", bundle: nil)
         //elementListView.todo = self.todo
-        resultView.isHidden = true
         addTodo()
         self.navigationController?.popToRootViewController(animated: true)
         //self.navigationController?.pushViewController(elementListView, animated: true)
@@ -90,8 +87,8 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let myContext = appDelegate.persistentContainer.viewContext
         
-        let entity = NSEntityDescription.entity(forEntityName: "Todo", in: context)
-        let aTask = NSManagedObject(entity: entity!, insertInto: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Todo", in: myContext)
+        let aTask = NSManagedObject(entity: entity!, insertInto: myContext)
         
         let mutable = NSMutableSet()
 //        var aTask = NSEntityDescription.insertNewObject(forEntityName: "test", into: Task().managedObjectContext!)
