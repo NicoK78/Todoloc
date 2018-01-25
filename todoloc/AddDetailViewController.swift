@@ -84,31 +84,13 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         todo.longitude = pointAnnotation.coordinate.longitude
         todo.latitude = pointAnnotation.coordinate.latitude
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let myContext = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Todo", in: myContext)
-        let aTask = NSManagedObject(entity: entity!, insertInto: myContext)
-        
+        let aTask = Task(context: context)
         let mutable = NSMutableSet()
-//        var aTask = NSEntityDescription.insertNewObject(forEntityName: "test", into: Task().managedObjectContext!)
+
         for str in (self.todom?.taches)! {
-            print("###### IN FOR #######")
-//            let aTask: Task? = nil
-            print(str)
-            aTask.setValue(str, forKeyPath: "name")
-            aTask.value(forKeyPath: "name")
-            aTask.setValue(false, forKey: "finished")
-            aTask.setValue("My Details", forKey: "detail")
-//            aTask.value(forKey: "name") = str
-            print("good")
-//            aTask.value(forKey: "finished") = false
-//            aTask.value(forKey: "detail") = "My Details"
-//            aTask.name = str
-            print("finish")
-//            print(aTask.name)
-//            aTask.finished = false
-//            aTask.detail = "Details"
+            aTask.name = str
+            aTask.finished = false
+            aTask.detail = "Details"
             
             mutable.add(aTask)
         }
