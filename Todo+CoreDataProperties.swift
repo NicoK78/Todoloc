@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.swift
 //  todoloc
 //
-//  Created by Nico on 24/01/2018.
+//  Created by Nico on 25/01/2018.
 //  Copyright © 2018 Nico. All rights reserved.
 //
 //
@@ -21,6 +21,7 @@ extension Todo {
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var address: String?
+    @NSManaged public var finished: Bool
     @NSManaged public var tasks: NSSet?
 
 }

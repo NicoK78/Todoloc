@@ -84,10 +84,13 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         todo.longitude = pointAnnotation.coordinate.longitude
         todo.latitude = pointAnnotation.coordinate.latitude
         
-        let aTask = Task(context: context)
         let mutable = NSMutableSet()
 
         for str in (self.todom?.taches)! {
+            
+            let aTask = Task(context: context)
+            
+            aTask.id = UUID()
             aTask.name = str
             aTask.finished = false
             aTask.detail = "Details"
