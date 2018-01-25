@@ -15,20 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let jsonDecoder: JSONDecoder = JSONDecoder()
+    var todos: [Todo] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         window.rootViewController = UINavigationController(rootViewController: ElementsListViewController())
         window.makeKeyAndVisible()
         self.window = window
-        
+
         if WCSession.isSupported() {
             let session = WCSession.default
             session.delegate = self
             session.activate()
         }
-        
+
         return true
     }
 
@@ -53,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     // MARK: - Core Data stack
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -68,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -82,9 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-    
+
     // MARK: - Core Data Saving support
-    
+
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -98,26 +100,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
+    func updateTask(uuid: String) {
+        do {
+            todos = try context.fetch(Todo.fetchRequest())
+        } catch {
+            print("Echec !")
+        }
+        for todo: Todo in todos {
+            for task in todo.tasks! {
+                let t = task as! Task
+                let isEqual = (t.id?.uuidString == uuid)
+                if isEqual {
+                    t.finished = true
+                }
+            }
+        }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+
 }
 
 extension AppDelegate: WCSessionDelegate {
-    
+
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
+
     }
-    
+
     func sessionDidBecomeInactive(_ session: WCSession) {
-        
+
     }
-    
+
     func sessionDidDeactivate(_ session: WCSession) {
-        
+
     }
-    
+
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
         do {
             let task = try jsonDecoder.decode(TaskModel.self, from: messageData)
-            
+
             print("iOS> Successfully decoded")
             print(task.name)
         } catch {

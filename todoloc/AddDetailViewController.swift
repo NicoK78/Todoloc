@@ -80,7 +80,7 @@ class AddDetailViewController: UIViewController, UISearchBarDelegate {
         let todo = Todo(context: context)
 
         todo.title = self.todom?.title
-        todo.address = pointAnnotation.description
+        todo.address = pointAnnotation.title
         todo.longitude = pointAnnotation.coordinate.longitude
         todo.latitude = pointAnnotation.coordinate.latitude
 
