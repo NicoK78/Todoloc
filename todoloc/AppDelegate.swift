@@ -13,7 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var todos: [Todo] = []
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -91,7 +93,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-
+    func updateTask(uuid: String) {
+        do {
+            todos = try context.fetch(Todo.fetchRequest())
+        } catch {
+            print("Echec !")
+        }
+        for todo: Todo in todos {
+            for task in todo.tasks! {
+                let t = task as! Task
+                let isEqual = (t.id?.uuidString == uuid)
+                if isEqual {
+                    t.finished = true
+                }
+            }
+        }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
 
 }
 
